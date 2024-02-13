@@ -1,0 +1,160 @@
+@import "aos/dist/aos.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+:root {
+  /* Color Palette */
+  --primary-color: #3b59ff; /* Your main color */
+  --secondary-color: #ff5d4e; /* Secondary color */
+  --tertiary-color: #eae8ff; /* Tertiary color */
+  --neutral-color: #808080; /* Neutral color */
+  --base-white: #ffffff; /* Base white color */
+  --custom-black: #3a3535; /* Custom black color */
+
+  /* Specific UI Elements */
+  --row-highlight-color: #f5f5f5; /* Row highlight color */
+  --highlight-background-color: #e2e3ff; /* Highlight background color */
+  --footer-height: 50px; /* Footer height */
+  --header-height: 113px; /* Header height */
+  --btn-bg-color: var(--secondary-color); /* Button background color */
+  --btn-bg-color-hover: #565564; /* Button background color on hover */
+  --btn-text-color: var(--base-white); /* Button text color */
+  --btn-text-color-hover: var(--base-white); /* Button text color on hover */
+  --btn-border-color: var(--secondary-color); /* Button border color */
+  --btn-border-color-hover: #565564; /* Button border color on hover */
+  --btn-height: 40px; /* Button height */
+  --btn-padding: 20px; /* Button padding */
+  --btn-font-size: 13px; /* Button font size */
+  --btn-icon-size: 16px; /* Button icon size */
+
+  --main-font-size: 16px; /* Main font size */
+  --heading-font-size: 22px; /* Heading font size */
+  --subheading-font-size: 18px; /* Subheading font size */
+  --border-radius: 5px; /* Border radius for elements */
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  // nothing selectable
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.selectable {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-size: var(--main-font-size);
+  color: var(--custom-black);
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Oswald", sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-size: 2em; /* 32px if base font-size is 16px */
+  // color: var(--primary-color);
+}
+
+h2 {
+  font-size: 1.5em; /* 24px */
+  // color: var(--secondary-color);
+}
+h3 {
+  font-size: 1.25em; /* 20px */
+  color: var(--tertiary-color);
+}
+
+h4 {
+  font-size: 1.125em; /* 18px */
+  color: var(--neutral-color);
+}
+
+h5 {
+  font-size: 1em; /* 16px */
+  color: var(--primary-color);
+}
+
+h6 {
+  font-size: 0.875em; /* 14px */
+  color: var(--secondary-color);
+}
+
+.button {
+  background-color: var(--secondary-color);
+  color: var(--base-white);
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--tertiary-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+@media screen and (max-width: 600px) {
+  .button {
+    padding: 15px 20px; /* Larger padding for mobile */
+  }
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.808),
+      0 0 30px rgb(255, 255, 255), 0 0 40px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0);
+  }
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}
