@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { AnalyticsService } from 'src/app/services/analytics.service';
 import { CookieService } from 'src/app/services/cookie.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-cookie-notice',
@@ -13,14 +13,14 @@ export class CookieNoticeComponent {
   showCookieBanner = false;
 
   constructor(
-    private analyticsService: AnalyticsService,
     private router: Router,
-    private cookieService: CookieService // inject the new service
+    private cookieService: CookieService,
+    private googleAnalytics: GoogleAnalyticsService
   ) {}
 
   ngOnInit(): void {
     this.checkForGPC();
-    const consent = this.cookieService.getConsent(); // use the new service method
+    const consent = this.cookieService.getConsent();
     if (!consent) {
       this.showCookieBanner = true;
     }
@@ -28,17 +28,13 @@ export class CookieNoticeComponent {
 
   checkForGPC() {
     const gpc = (navigator as any).globalPrivacyControl;
-    // if (gpc && gpc === true) {
-    //   localStorage.setItem('cookieConsent', 'false');
-    //   this.showCookieBanner = false;
-    // }
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         if (event.urlAfterRedirects === '/cookie-policy') {
           this.showCookieBanner = false;
         } else {
-          const consent = localStorage.getItem('cookieConsent');
+          const consent = localStorage.getItem('cookiesConsent');
           if (!consent) {
             this.showCookieBanner = true;
           }
@@ -47,13 +43,13 @@ export class CookieNoticeComponent {
   }
   declineCookies() {
     this.showCookieBanner = false;
-    this.cookieService.setConsent('false'); // use the new service method
-    this.cookieService.deleteAllCookies(); // use the new service method
+    this.cookieService.setConsent('false');
+    this.cookieService.deleteAllCookies();
   }
 
   acceptCookies() {
-    this.cookieService.setConsent('true'); // use the new service method
+    this.cookieService.setConsent('true');
     this.showCookieBanner = false;
-    this.analyticsService.loadScript();
+    this.googleAnalytics.consentGiven();
   }
 }

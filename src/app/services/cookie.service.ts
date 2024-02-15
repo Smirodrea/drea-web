@@ -7,11 +7,11 @@ export class CookieService {
   constructor() {}
 
   setConsent(value: string): void {
-    localStorage.setItem('cookieConsent', value);
+    localStorage.setItem('cookiesConsent', value);
   }
 
   getConsent(): string | null {
-    return localStorage.getItem('cookieConsent');
+    return localStorage.getItem('cookiesConsent');
   }
 
   deleteAllCookies(): void {

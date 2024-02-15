@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'src/app/services/cookie.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-cookie-policy',
@@ -8,11 +9,15 @@ import { CookieService } from 'src/app/services/cookie.service';
   styleUrls: ['./cookie-policy.component.scss'],
 })
 export class CookiePolicyComponent {
-  public cookieStatus = 'Unknown'; // Initialize to 'Unknown'
+  public cookieStatus = 'Unknown';
 
-  constructor(private cookieService: CookieService, private router: Router) {} // Inject the service
+  constructor(
+    private cookieService: CookieService,
+    private router: Router,
+    private googleAnalytics: GoogleAnalyticsService
+  ) {}
   ngOnInit() {
-    this.updateStatus(); // Update status on initialization
+    this.updateStatus();
   }
 
   getCookieStatusClass() {
@@ -34,5 +39,6 @@ export class CookiePolicyComponent {
   updateStatus() {
     const consent = this.cookieService.getConsent();
     this.cookieStatus = consent === 'true' ? 'Accepted' : 'Declined';
+    this.googleAnalytics.consentGiven();
   }
 }

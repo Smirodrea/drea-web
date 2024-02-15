@@ -44,6 +44,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  scroll-behavior: smooth;
 }
 .selectable {
   -webkit-user-select: text !important;
@@ -51,20 +52,18 @@
   -ms-user-select: text !important;
   user-select: text !important;
 }
-
 html {
   scroll-behavior: smooth;
 }
 body {
   font-size: var(--main-font-size);
   color: var(--custom-black);
-
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   height: 100%;
   overflow-x: hidden;
-}
-body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

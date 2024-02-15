@@ -297,16 +297,15 @@
     </form>
 
     <div *ngIf="formSubmissionFailed" class="error-message">
-      <h2 *ngIf="retryAllowed">We're Sorry!</h2>
       <p>
-        <span *ngIf="retryAllowed">
+        <span *ngIf="retryAllowed && retries < 2">
+          <h2>We're Sorry!</h2>
           We couldn't process your request at this time.
 
           <br />
-          <button (click)="resetForm()" class="retry-btn">
-            Try Again
-          </button> </span
-        ><br />Please <span *ngIf="retryAllowed">try again or </span>contact us
+          <button (click)="resetForm()" class="retry-btn">Try Again</button>
+        </span>
+        <br />Please <span *ngIf="retryAllowed">try again or </span>contact us
         directly:
       </p>
     </div>

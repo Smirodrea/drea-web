@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
 import { WaitingListService } from 'src/app/services/waiting-list.service';
 import { WaitingListFormData } from 'src/app/models/WaitingListFormData ';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 export interface Message {
   text: string;
@@ -53,39 +54,63 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private snackbarService: SnackbarService,
     private chatService: ChatService,
     private renderer: Renderer2,
-    private waitingListService: WaitingListService
+    private waitingListService: WaitingListService,
+    private googleAnalytics: GoogleAnalyticsService
   ) {}
   public messages: Message[] = [];
   public userMessage: string = '';
 
-  onSubmit(): void {
+  onSubmit = async (): Promise<void> => {
     if (this.waitingListForm.valid && !this.isSubmitting) {
       this.isSubmitting = true; // Disable the submit button to indicate loading
-      if (this.retries === 1) {
-        this.retryAllowed = false;
-      }
-      this.waitingListService
-        .sendEmail(this.waitingListForm.value)
-        .then((response) => {
-          this.formSubmittedSuccessfully = true;
-          this.formSubmissionFailed = false;
-          localStorage.setItem('formSubmitted', 'true');
-          // Reset retries on successful submission
-          this.retries = 0;
-          localStorage.setItem('retries', this.retries.toString());
-        })
-        .catch((error) => {
-          console.error('Form submission failed', error);
-          this.formSubmissionFailed = true;
-          this.isSubmitting = false; // Re-enable the submit button for retry
-          this.updateRetries();
+
+      // Track the attempt to submit the form as an event
+      this.googleAnalytics.trackEvent('submit_form', {
+        event_category: 'Engagement',
+        event_label: 'Join Waiting List Attempt',
+      });
+
+      try {
+        debugger;
+        const response = await this.waitingListService.sendEmail(
+          this.waitingListForm.value
+        );
+
+        // On successful form submission, track the success event
+        this.googleAnalytics.trackEvent('submit_form_success', {
+          event_category: 'Engagement',
+          event_label: 'Join Waiting List Success',
         });
+
+        this.formSubmittedSuccessfully = true;
+        this.formSubmissionFailed = false;
+        localStorage.setItem('formSubmitted', 'true');
+        this.retries = 0; // Reset retries on successful submission
+        localStorage.setItem('retries', this.retries.toString());
+      } catch (error: any) {
+        debugger;
+        localStorage.setItem('formSubmitted', 'false');
+        // On form submission failure, track the failure event
+        this.googleAnalytics.trackEvent('submit_form_failure', {
+          event_category: 'Engagement',
+          event_label: `Join Waiting List Failure - ${
+            error.type || 'Unknown Error'
+          }`,
+        });
+
+        console.error('Form submission failed', error);
+        this.formSubmissionFailed = true;
+        this.updateRetries();
+      } finally {
+        this.isSubmitting = false; // Re-enable the submit button after attempt
+      }
     } else {
       this.touchAllFields(); // Make sure all fields are touched to show validation errors
     }
-  }
+  };
 
   updateRetries(): void {
+    debugger;
     this.retries += 1;
     localStorage.setItem('retries', this.retries.toString());
     if (this.retries >= 2) {
@@ -103,11 +128,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   checkRetryAllowed(): void {
+    debugger;
     this.retryAllowed = this.retries < 2;
   }
 
   ngOnInit(): void {
     this.retries = parseInt(localStorage.getItem('retries') || '0', 10);
+    if (this.retries === 2) {
+      this.formSubmissionFailed = true;
+    }
+    this.formSubmissionFailed =
+      localStorage.getItem('formSubmitted') === 'false';
     this.formSubmittedSuccessfully =
       localStorage.getItem('formSubmitted') === 'true';
     this.checkRetryAllowed();

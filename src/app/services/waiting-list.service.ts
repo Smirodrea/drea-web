@@ -19,6 +19,7 @@ export class WaitingListService {
       );
     } else {
       alert('Something Went Wrong!');
+      // return emailjs.send('failed', '', templateParams);
       return Promise.resolve({ status: 200, text: 'OK' });
     }
   }

@@ -3,7 +3,7 @@ import { ViewportScroller } from '@angular/common';
 import * as AOS from 'aos';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { AnalyticsService } from './services/analytics.service';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +13,12 @@ import { AnalyticsService } from './services/analytics.service';
 export class AppComponent {
   scrollToSection(sectionId: string) {
     // Timeout to allow for navigation and DOM updates
+    debugger;
     setTimeout(() => {
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        this.googleAnalytics.trackVirtualPageView(`/${section}`);
       }
     }, 0);
   }
@@ -60,6 +62,7 @@ export class AppComponent {
   }
 
   handleLinkClick(elementId: string) {
+    debugger;
     if (this.isHomeRoute) {
       this.scrollToElement(elementId);
     } else {
@@ -73,7 +76,7 @@ export class AppComponent {
   constructor(
     private viewportScroller: ViewportScroller,
     private router: Router,
-    private analyticsService: AnalyticsService
+    private googleAnalytics: GoogleAnalyticsService
   ) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -92,12 +95,11 @@ export class AppComponent {
   checkForGPC() {
     const gpc = (navigator as any).globalPrivacyControl;
     if (gpc && gpc === true) {
-      localStorage.setItem('cookieConsent', 'false');
+      localStorage.setItem('cookiesConsent', 'false');
     }
   }
 
   ngOnInit() {
-    this.analyticsService.loadScript();
     this.checkForGPC();
     AOS.init({
       duration: 1000, // This will control the duration of the animation

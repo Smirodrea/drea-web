@@ -6,11 +6,9 @@ import { enableProdMode } from '@angular/core';
 
 if (environment.production) {
   enableProdMode();
-
   // Disable console.log
   console.log = function () {};
-
-  // Optionally, disable other console functions in production
+  // Disable other console functions
   console.warn = function () {};
   console.error = function () {};
   console.info = function () {};
