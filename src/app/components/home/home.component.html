@@ -1,0 +1,337 @@
+<!-- <button class="waiting-list-button" role="button">
+  <span class="waiting-list-button-shadow"></span>
+  <span class="waiting-list-button-edge"></span>
+  <span class="waiting-list-button-front text"> JOIN NOW </span>
+</button> -->
+
+<section class="parallax-section top-section">
+  <div class="content-container content-theme-dark">
+    <div class="content-inner">
+      <div class="content-center">
+        <h1 class="shine-effect">DREA</h1>
+        <p>Making Deals Possible</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-section" class="parallax-section about-section">
+  <img
+    *ngIf="!videoLoaded"
+    src="assets/images/sharing-agent-infin.jpg"
+    class="preloaded-video-background"
+  />
+  <video
+    #videoPlayer
+    class="video-background"
+    playsinline
+    autoplay
+    muted
+    [muted]="'muted'"
+    loop
+    preload="auto"
+    [preload]="'auto'"
+    (loadedmetadata)="onVideoLoad()"
+  >
+    <source [src]="videoSource" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="content-container content-theme-light">
+    <div class="about-section-overlay" id="about-drea-p">
+      <p
+        style="height: 133px"
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+      >
+        DREA is pioneering a change in the real estate transaction world <br />
+        streamlining the buying and selling process.
+      </p>
+    </div>
+
+    <!-- paralax h1 -->
+    <div class="content-inner">
+      <div class="content-center" style="position: relative">
+        <h1>DREA</h1>
+        <p style="height: 28px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="success-section" class="customer-success-section">
+  <div class="customer-success-content">
+    <h2>Adapting to Every Market</h2>
+    <p>
+      We are providing a tailored solution for any kind of market, whether it's
+      a seller's or buyer's market. By leveraging data-driven insights and
+      innovative technology, DREA ensures that every transaction is optimized
+      for success. Our platform intelligently adapts to fluctuating market
+      conditions, offering our users a strategic advantage.
+    </p>
+    <!-- 
+        <p>
+          Join us on a journey as we transform the real estate landscape,
+          facilitating successful transactions with precision and ease. Discover the
+          difference with DREA—where every market challenge is turned into an
+          opportunity for growth and success.
+        </p> -->
+  </div>
+</section>
+<!-- Customer Success Section End -->
+
+<!-- guarantee -->
+<div class="guarantee" id="features-section">
+  <div class="titlepage">
+    <h1>Empowering Real Estate Professionals</h1>
+    <p>
+      At DREA, we elevate your real estate operations with unparalleled insights
+      and technology.
+    </p>
+  </div>
+  <div>
+    <div class="guarantee-box_main">
+      <div class="guarantee-box" data-aos="flip-down">
+        <div class="guarantee-box_header">
+          <i class="fas fa-info-circle fa-3x"></i>
+          <h3>Transparent Deal Tracking</h3>
+        </div>
+        <p>
+          DREA provides complete visibility into every transaction phase,
+          ensuring agents stay informed and ahead.
+        </p>
+      </div>
+    </div>
+    <div class="guarantee-box_main">
+      <div class="guarantee-box" data-aos="flip-up" data-aos-delay="100">
+        <div class="guarantee-box_header">
+          <i class="fas fa-chart-line fa-3x"></i>
+          <h3>Boost Lead Conversion</h3>
+        </div>
+        <p>
+          Our platform enhances your ability to convert leads by optimizing
+          engagement and providing critical insights.
+        </p>
+      </div>
+    </div>
+    <div class="guarantee-box_main">
+      <div class="guarantee-box" data-aos="flip-up" data-aos-delay="300">
+        <div class="guarantee-box_header">
+          <i class="fas fa-handshake fa-3x"></i>
+          <h3>Build Client Confidence</h3>
+        </div>
+        <p>
+          Cultivate trust with a platform that supports secure and transparent
+          client interactions.
+        </p>
+      </div>
+    </div>
+    <div class="guarantee-box_main">
+      <div class="guarantee-box" data-aos="flip-down" data-aos-delay="200">
+        <div class="guarantee-box_header">
+          <i class="fas fa-life-ring fa-3x"></i>
+          <h3>Rescue At-Risk Deals</h3>
+        </div>
+        <p>
+          Leverage DREA's tools to quickly address and resolve potential issues,
+          keeping deals on course.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-one">
+  <section class="drea-background">
+    <div
+      class="content-container content-theme-light"
+      id="problem-solution-section"
+    >
+      <div class="content-inner">
+        <!-- <div class="content-center">
+          <h1>DREA</h1>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <h2 class="section-one__title" data-aos="fade-zoom-in" data-aos-delay="100">
+    The Problem
+  </h2>
+  <p class="section-one__descr" data-aos="fade-zoom-out">
+    In today's world things move fast, technology evolves, processes change.
+    Only a few industries didn't utilize software properly yet. The real estate
+    transaction industry is one of those industries. It doesn't matter if you're
+    in a buyer's market or a seller's market, Real estate agents do the same
+    things just like 20 years ago. The process is lacking transparency, agents
+    frequently lose deals because of mistakes that could have been avoided. Bad
+    pricing strategies often make the process harder and creates distrust
+    between clients in their agent.
+  </p>
+  <!-- begin Separator -->
+  <div class="separator">
+    <svg
+      class="separator__svg"
+      width="100%"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      fill="#192646"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M 100 100 V 10 L 0 100" />
+      <path d="M 30 73 L 100 18 V 10 Z" fill="#161e31" stroke-width="0" />
+    </svg>
+  </div>
+  <!-- end Separator -->
+</div>
+<div class="section-two">
+  <section class="drea-background">
+    <div class="content-container content-theme-light">
+      <div class="content-inner">
+        <!-- <div class="content-center" style="position: relative; top: -11px">
+          <h1>DREA</h1>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <h2 class="section-two__title" data-aos="fade-zoom-in" data-aos-delay="100">
+    The Solution
+  </h2>
+  <p class="section-two__descr" data-aos="fade-zoom-in">
+    Our mission is to create a new way of buying and selling real estate.
+    Imagine a seamless process that removes the uncertainty, a process which you
+    can handle from your mobile phone from anywhere anytime. We create software
+    that helps you to make better faster deals, automates processes and helps
+    you to make smarter decisions. Ultimately saving you a lot of time so you
+    can invest more in your clients and nurture new relationships.
+  </p>
+</div>
+
+<!-- Join Our Waiting List Section Start -->
+<section id="join-waiting-list-section" class="join-waiting-list-section">
+  <div
+    *ngIf="!formSubmittedSuccessfully; else successMessage"
+    class="waiting-list-content"
+  >
+    <h2>Join Our Waiting List</h2>
+    <p>
+      Be among the first to revolutionize your real estate experience with DREA.
+      <br />
+      Sign up today to stay informed and gain early access to our products.
+    </p>
+    <form
+      *ngIf="
+        !formSubmittedSuccessfully && !formSubmissionFailed && retryAllowed
+      "
+      #waitingListForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+      <div class="form-group">
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Full Name *"
+          [(ngModel)]="formModel.fullName"
+          required
+          #fullName="ngModel"
+          [class.is-invalid]="fullName.invalid && fullName.touched"
+        />
+        <div
+          *ngIf="fullName.invalid && fullName.touched"
+          class="invalid-feedback"
+        >
+          Full Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          id="brokerageName"
+          name="brokerageName"
+          placeholder="Brokerage Name"
+          [(ngModel)]="formModel.brokerageName"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email *"
+          [(ngModel)]="formModel.email"
+          required
+          #email="ngModel"
+          [class.is-invalid]="email.invalid && email.touched"
+        />
+        <div
+          *ngIf="fullName.invalid && fullName.touched"
+          class="invalid-feedback"
+        >
+          Email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone"
+          [(ngModel)]="formModel.phone"
+        />
+      </div>
+      <div class="form-group">
+        <textarea
+          id="thoughts"
+          name="thoughts"
+          placeholder="Share Your Thoughts"
+          [(ngModel)]="formModel.thoughts"
+        ></textarea>
+      </div>
+      <button type="submit" class="submit-btn" [disabled]="isSubmitting">
+        Submit
+      </button>
+    </form>
+
+    <div *ngIf="formSubmissionFailed" class="error-message">
+      <p>
+        <span *ngIf="retryAllowed && retries < 2">
+          <h2>We're Sorry!</h2>
+          We couldn't process your request at this time.
+
+          <br />
+          <button (click)="resetForm()" class="retry-btn">Try Again</button>
+        </span>
+        <br />Please <span *ngIf="retryAllowed">try again or </span>contact us
+        directly:
+      </p>
+    </div>
+
+    <p>Email: <a href="mailto:talktous@dreaai.com">talktous@dreaai.com</a></p>
+  </div>
+
+  <ng-template #successMessage>
+    <div class="success-message">
+      <h2>Thank You!</h2>
+      <p>
+        You have successfully joined our waiting list. <br />We will be in touch
+        soon!
+        <br />
+      </p>
+      <br />
+      <br />
+      <p>Feel free to contact us at any time:</p>
+      <p>
+        Email:
+        <a class="selectable" href="mailto:talktous@dreaai.com"
+          >talktous@dreaai.com</a
+        >
+      </p>
+    </div>
+  </ng-template>
+</section>
+
+<!-- Join Our Waiting List Section End -->

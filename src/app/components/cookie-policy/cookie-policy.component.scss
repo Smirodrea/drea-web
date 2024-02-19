@@ -1,0 +1,64 @@
+.cookie-policy {
+  padding: 20px;
+  font-size: 16px;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-top: 3em;
+}
+
+h1,
+h2 {
+  color: #333;
+}
+
+p,
+ul {
+  margin-bottom: 3.5em;
+}
+
+.cookie-buttons {
+  margin-top: 1em;
+  text-align: left;
+}
+
+.cookie-buttons button {
+  background-color: #333; /* Same color as headers */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px; /* Same font size as .cookie-policy */
+  border-radius: 4px;
+}
+
+.cookie-buttons button:hover {
+  background-color: #555; /* Darker color for hover effect */
+}
+
+.cookie-status {
+  margin-top: 1em;
+  color: #333; // Same color as headers
+  font-weight: bold; // Make it bold to highlight
+}
+
+span.accepted {
+  color: green;
+}
+
+span.declined {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .cookie-policy {
+    padding: 10px;
+    font-size: 14px;
+    padding-top: 43px;
+  }
+
+  .cookie-buttons button {
+    font-size: 14px; /* Smaller font size for mobile */
+    margin-bottom: 3.5em;
+  }
+}
